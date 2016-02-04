@@ -1,10 +1,15 @@
 var listArr = [];
 
 function addItem() {
+
   document.getElementById('infoMsg').innerHTML = '';
   var node = document.createElement('li');
   var text = document.getElementById('itemInput').value;
-  var textNode = document.createTextNode(text);
+  if(text === null || text === '') {
+    document.getElementById('infoMsg').innerHTML = "<p>Couldn't add empty data!</p>";
+
+  } else {
+    var textNode = document.createTextNode(text);
 
   listArr.push(text);
   console.log(listArr);
@@ -12,6 +17,8 @@ function addItem() {
   node.appendChild(textNode);
   document.getElementById('listBody').appendChild(node);
   document.getElementById('itemInput').value = '';
+  }
+
 }
 
 function removeItem() {
